@@ -1,0 +1,19 @@
+<ion-view view-title="Prescription">
+<ion-header-bar class='bar-balanced'>
+    <h1 class="title">Registration</h1>
+    <!--<div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>-->
+  </ion-header-bar>
+  <ion-content ng-controller="ExampleController">
+  <div class="btnclass">
+    <button class="button btnstyle button-balanced" ng-click="takePhoto()">
+		Take Photo
+	</button>
+	<button class="button btnstyle button-assertive" ng-click="choosePhoto()">
+		Choose Photo
+	</button>
+	</div>
+	<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
+  </ion-content>
+</ion-view>

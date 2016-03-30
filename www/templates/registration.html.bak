@@ -1,0 +1,52 @@
+<ion-view>
+  <ion-header-bar class='bar-balanced'>
+    <h1 class="title" style='color:black\'>Registration</h1>
+    <!--<div class="buttons">
+      <button class="button button-clear" ng-click="closeLogin()">Close</button>
+    </div>-->
+  </ion-header-bar>
+  <ion-content ng-controller='registrationCtrl'>
+		<form class="list" id="register" name="register" ng-submit="SendHttpPostData()">
+            <label class="item item-input">
+                <span class="input-label">Name</span>
+                <input type="text" name="name" ng-model="name" placeholder="Enter Your Name">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Email ID</span>
+                <input type="email" name="email" ng-model="email" placeholder="Enter Email ID">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Password</span>
+                <input type="password" name="password" ng-model="password" placeholder="Enter Password">
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Mobile No</span>
+                <input type="tel" name="mobile" ng-model="mobile" placeholder="Enter Your Mobile No">
+            </label>
+			<label class="item item-input">
+                <span class="input-label">Address</span>
+                <input type="text" name="address" ng-model="address" placeholder="Enter Address">
+            </label>
+			<label class="item item-input">
+                <span class="input-label">City</span>
+                <input type="text" name="city" ng-model="city" placeholder="Enter City">
+            </label>
+			<label class="item item-input">
+                <span class="input-label">State</span>
+                <input type="text" name="state" ng-model="state" placeholder="Enter State">
+            </label>
+			<label class="item item-input">
+                <span class="input-label">ZIP</span>
+                <input type="tel" name="zip" ng-model="zip" placeholder="Enter Pincode">
+            </label>
+        <div class="btnclass">
+            <button id="home-button1" style="font-weight:bold; border-radius:10px; width:100px " class="button button-balanced " type="submit" name="submit">Submit</button>
+            <button id="home-button2" style="font-weight:bold; border-radius:10px; width:100px" class="button button-assertive">Reset</button>
+        </div>
+		        </form>
+		<div class="card">
+                    <div class="item item-text-wrap">
+                        Response: <b ng-bind="response"></b>
+                    </div>
+  </ion-content>
+</ion-view>
