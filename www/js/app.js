@@ -26,14 +26,14 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
   $stateProvider
 
     .state('app', {
-    url: '/app',
+    url: "/app",
     abstract: true,
     templateUrl: 'templates/menu.html',
     controller: 'AppCtrl'
   })
 
   .state('app.search', {
-    url: '/search',
+    url: "/search",
     views: {
       'menuContent': {
         templateUrl: 'templates/search.html'
@@ -42,7 +42,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
   })
 
 	.state('app.home', {
-    url: '/home',
+    url: "/home",
     views: {
       'menuContent': {
         templateUrl: 'templates/home.html'
@@ -51,7 +51,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
   })
 
   .state('app.browse', {
-      url: '/browse',
+      url: "/browse",
       views: {
         'menuContent': {
           templateUrl: 'templates/browse.html'
@@ -59,7 +59,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
       }
     })
     .state('app.registration', {
-      url: '/registration',
+      url: "/registration",
       views: {
         'menuContent': {
           templateUrl: 'templates/registration.html',
@@ -69,7 +69,17 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
     })
 	
 	.state('app.prescription', {
-    url: '/prescription',
+    url: "/prescription",
+    views: {
+      'menuContent': {
+        templateUrl: 'templates/prescription.html',
+        //controller: 'PictureCtrl'
+      }
+    }
+  })
+
+  .state('app.signature', {
+    url: "/signature",
     views: {
       'menuContent': {
         templateUrl: 'templates/prescription.html',
