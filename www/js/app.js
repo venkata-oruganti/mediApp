@@ -73,7 +73,7 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
     views: {
       'menuContent': {
         templateUrl: 'templates/prescription.html',
-        //controller: 'PictureCtrl'
+       // controller: 'prescriptionCtrl'
       }
     }
   })

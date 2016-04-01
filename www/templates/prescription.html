@@ -1,11 +1,13 @@
 <ion-view view-title="Prescription">
 <ion-header-bar class='bar-balanced'>
-    <h1 class="title">Registration</h1>
+    <h1 class="title">Prescription</h1>
     <!--<div class="buttons">
       <button class="button button-clear" ng-click="closeLogin()">Close</button>
     </div>-->
   </ion-header-bar>
   <ion-content ng-controller="ExampleController">
+  <img ng-show="imgURI !== undefined" ng-src="{{imgURI}}"  style="align:center;width:100%">
+
   <div class="btnclass">
     <button class="button btnstyle button-balanced" ng-click="takePhoto()">
 		Take Photo
@@ -14,6 +16,14 @@
 		Choose Photo
 	</button>
 	</div>
-	<img ng-show="imgURI !== undefined" ng-src="{{imgURI}}" style="text-align: center">
+	<div class="btnclass">
+	<button class="button btnstyle button-balanced" ng-click="uploadFile()">
+		Upload
+	</button>
+	</div>
+	<div class="card">
+                    <div class="item item-text-wrap">
+                        Response: <b ng-bind="response"></b>
+                    </div>
   </ion-content>
 </ion-view>

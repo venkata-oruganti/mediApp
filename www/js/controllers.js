@@ -79,6 +79,7 @@ angular.module('starter.controllers', [])
                 $scope.response = data;
                 
             })
+
             .error(function (data, status, header, config) {
                 $scope.response = "Data: " + data +
                     "<hr />status: " + status +
@@ -128,8 +129,10 @@ angular.module('starter.controllers', [])
   }, false);
 })
 
-.controller("ExampleController", function ($scope, $cordovaCamera) {
- 
+.controller("ExampleController", function ($scope, $cordovaCamera, $http) {
+		
+		$scope.imgURI = "http://placehold.it/300x300";
+
                 $scope.takePhoto = function () {
                   var options = {
                     quality: 75,
@@ -144,6 +147,7 @@ angular.module('starter.controllers', [])
                 };
    
                     $cordovaCamera.getPicture(options).then(function (imageData) {
+						 
                         $scope.imgURI = "data:image/jpeg;base64," + imageData;
                     }, function (err) {
                         // An error occured. Show a message to the user
@@ -169,4 +173,41 @@ angular.module('starter.controllers', [])
                         // An error occured. Show a message to the user
                     });
                 }
+
+				$scope.uploadFile = function(){
+				
+				/*var file = imageFile;
+				console.log('file is ' + JSON.stringify(file));
+				var uploadUrl = "http://192.168.56.1:1337/file/upload";
+				fileUpload.uploadFileToUrl(file, uploadUrl);*/
+
+				 var data ={
+					filename: "myimage",
+					imgbase: $scope.imgURI,
+					 headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+
+            }; 
+				console.log(data);
+      
+            var config = {
+                headers : {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            }           
+
+            $http.post('http://sumudra.net/pet/getservice.asmx/UploadFile', data, config)
+            .success(function (data, status, headers, config) {
+                $scope.response = data;
+                
+            })
+            .error(function (data, status, header, config) {
+                $scope.response = "Data: " + data +
+                    "<hr />status: " + status +
+                    "<hr />headers: " + header +
+                    "<hr />config: " + config;
+            });
+
+				};
             });
