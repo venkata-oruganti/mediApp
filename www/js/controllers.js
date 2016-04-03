@@ -131,14 +131,14 @@ angular.module('starter.controllers', [])
 
 .controller("ExampleController", function ($scope, $cordovaCamera, $http) {
 		//http://placehold.it/300x300
-		$scope.imgURI = "img/pic.jpg";
+		$scope.imgURI = "http://placehold.it/350x150";
 
                 $scope.takePhoto = function () {
                   var options = {
                     quality: 75,
                     destinationType: Camera.DestinationType.DATA_URL,
                     sourceType: Camera.PictureSourceType.CAMERA,
-                    allowEdit: true,
+                 //   allowEdit: true,
                     encodingType: Camera.EncodingType.JPEG,
                     targetWidth: 300,
                     targetHeight: 300,
@@ -146,9 +146,9 @@ angular.module('starter.controllers', [])
                     saveToPhotoAlbum: false
                 };
    
-                    $cordovaCamera.getPicture(options).then(function (imageData) {
-						 
+                    $cordovaCamera.getPicture(options).then(function (imageData) {						 
                         $scope.imgURI = "data:image/jpeg;base64," + imageData;
+                        $scope.response = $scope.imgURI;
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
@@ -169,7 +169,8 @@ angular.module('starter.controllers', [])
    
                     $cordovaCamera.getPicture(options).then(function (imageData) {
                         $scope.imgURI = "data:image/jpeg;base64," + imageData;
-						$scope.resp = imageData;
+						
+                        $scope.response = imageData; // test image data, which is
                     }, function (err) {
                         // An error occured. Show a message to the user
                     });
@@ -182,29 +183,33 @@ angular.module('starter.controllers', [])
 				var uploadUrl = "http://192.168.56.1:1337/file/upload";
 				fileUpload.uploadFileToUrl(file, uploadUrl);*/
 
-				 var data ={
-					base64String: "my code",
-					filename: "myimage",
-					filetype: "jpg"
-            }; 
-				console.log(data);
-      
-           /* var config = {
+				 var data = $.param({
+            					base64String: $scope.response,
+            					filename: "myimage",
+            					filetype: "jpg"
+                    }); 
+/*				
+         var data = $.param({
+            json: ({
+                name: $scope.newName
+            })
+        });
+*/
+        var config = {
                 headers : {
                     'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
                 }
-            }  */         
+            };  
 
-            $http.post('http://sumudra.net/pet/getservice.asmx/Base64ToImg', data)
-            .success(function (data, status, headers) {
-                $scope.response = data;
-                
-            })
-            .error(function (data, status, header, config) {
-                $scope.response = "Data: " + data +
+            $http.post('http://sumudra.net/pet/getservice.asmx/Base64ToImg', data, config)
+                  .success(function (data, status, headers) {
+                  $scope.response = "success data"+data;
+
+            }).error(function (data, status, header, config) {
+                $scope.response = "Failed Data: " + data +
                     "<hr />status: " + status +
                     "<hr />headers: " + header +
-                    "<hr />config: " + config;
+                    "<hr /><Br />config: " + config; 
             });
 
 				};
