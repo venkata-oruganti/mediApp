@@ -82,8 +82,8 @@ angular.module('starter', ['ionic','ngCordova', 'starter.controllers'])
     url: "/signature",
     views: {
       'menuContent': {
-        templateUrl: 'templates/prescription.html',
-       // controller: 'prescriptionCtrl'
+        templateUrl: 'templates/signature.html',
+        controller: 'signCtrl'
       }
     }
   })

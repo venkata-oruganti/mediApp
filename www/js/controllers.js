@@ -213,4 +213,6 @@ angular.module('starter.controllers', [])
             });
 
 				};
-            });
+  })
+
+.controller("signCtrl", function ($scope, $cordovaCamera, $http) {});
